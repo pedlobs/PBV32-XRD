@@ -49,34 +49,34 @@ for nome, data, _ in file_data:
 # Configurações principais
 ax.set_title("Difração")
 ax.set_xlim(0, 40)
-ax.set_ylim(0, 150e9)
+ax.set_ylim(0, 1.1e11)
 ax.set_xlabel("2theta (º)")
 ax.set_ylabel("Intensidade (u.a.)")
 ax.legend(loc="upper left", bbox_to_anchor=(0.02, 0.98), frameon=True)
 
 # Criar gráfico insetado no canto superior direito
-ax_inset = inset_axes(ax, width="45%", height="45%", loc="upper right", borderpad=0   # Ajustar o espaçamento para ficar mais rente
+ax_inset = inset_axes(ax, width="50%", height="50%", loc="upper right", borderpad=0 # Ajustar o espaçamento para ficar mais rente
 )
 
-# Plotar o heatmap no gráfico inserido
+# Plota o heatmap no gráfico de difração
 sns.heatmap(
     corr_pearson,
     ax=ax_inset,
     cmap="viridis",
-    cbar=False,  # Remover barra de cor para simplificar
+    cbar=False,  
     annot=True,
-    fmt=".2",
-    annot_kws={"size": 10},  # Aumenta o tamanho do texto dentro das células
-    square=True  # Força o formato quadrado
+    fmt=".3",
+    annot_kws={"size": 10},  
+    square=True,  # Força o formato quadrado
 )
 
-# Configurar título e ajustar os labels para o gráfico inserido
+# Configura título e ajusta os labels para o gráfico inserido
 ax_inset.set_title("Correlação Pearson", fontsize=10)
-ax_inset.set_xticklabels(ax_inset.get_xticklabels(), rotation=45, fontsize=8)
+ax_inset.set_xticklabels(ax_inset.get_xticklabels(), rotation=30, fontsize=8)
 ax_inset.set_yticklabels(ax_inset.get_yticklabels(), fontsize=8)
 
 # Salvar como SVG
-plt.savefig(f"Difração - {nome_txt}.svg")
+plt.savefig(f"Plots/completos/Difração - {nome_txt}.svg")
 
 # Exibir o gráfico
 #plt.show()
